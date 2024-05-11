@@ -6,3 +6,72 @@
     text-decoration: none;
     list-style: none;
 }
+
+/* Page Sections */
+header, main, aside, footer {
+    background-color: #f8f8f8;
+    border: dotted 2px rgb(0, 149, 255);
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+    min-height: 100vh;
+}
+
+header, footer {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    height: 100px;
+}
+
+main {
+    grid-column: 2 / 10;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1.5rem;
+    min-height: calc(100vh - 100px - 1.5rem);
+}
+
+aside {
+    grid-column: 10 / 12;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    min-height: calc(100vh - 100px - 1.5rem);
+}
+
+footer {
+    height: 200px;
+}
+
+/* Main Sections */
+main section {
+    grid-column: 1 / -1;
+    /* padding: 1.5rem; */
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1.5rem;
+}
+
+/* Content Elements */
+img {
+    width: 100%;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.big-text {
+    font-size: 2rem;
+}

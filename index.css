@@ -1,0 +1,7 @@
+#hero-img {
+    grid-column: 6 / 9;
+}
+
+#hero-textbox {
+    grid-column: 1 / 6;
+}
