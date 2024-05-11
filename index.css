@@ -1,11 +1,13 @@
 /* Styles that are only for the Homepage (index.html) */
 
 #hero-img {
-    grid-column: 6 / 9;
+    max-width: 300px;
+    grid-column: 8 / 11;
+    justify-self: end;
 }
 
 #hero-textbox {
-    grid-column: 1 / 6;
+    grid-column: 1 / 7;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 4rem auto auto 3rem 1fr;

@@ -37,9 +37,9 @@ header {
 }
 
 main {
-    grid-column: 2 / 10;
+    grid-column: 2 / 12;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(10, 1fr);
     gap: 1.5rem;
     min-height: calc(100vh - 100px - 1.5rem);
 }
@@ -61,13 +61,14 @@ main section {
     grid-column: 1 / -1;
     height: fit-content;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(10, 1fr);
     gap: 1.5rem;
 }
 
 /* Content elements */
 img {
     width: 100%;
+    height: auto;
 }
 
 h1 {
@@ -88,7 +89,7 @@ button {
     border-radius: 1.5rem;
     padding: 1rem;
     width: 100%;
-    background-color: rgb(35, 35, 35);
+    background-color: #3E3E3E;
     color: white;
     font-size: 1rem;
     font-weight: 500;
