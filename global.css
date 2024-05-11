@@ -1,3 +1,5 @@
+/* Global styles (for every page) */
+
 /* Reset Browser Default Styling */
 * {
     box-sizing: border-box;
@@ -5,6 +7,7 @@
     padding: 0;
     text-decoration: none;
     list-style: none;
+    line-height: 1.4;
 }
 
 /* Page Sections */
@@ -53,25 +56,48 @@ footer {
     height: 200px;
 }
 
-/* Main Sections */
+/* Subsections in the main section */
 main section {
     grid-column: 1 / -1;
-    /* padding: 1.5rem; */
     height: fit-content;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 1.5rem;
 }
 
-/* Content Elements */
+/* Content elements */
 img {
     width: 100%;
 }
 
 h1 {
     font-size: 4rem;
+    line-height: normal;
+}
+
+.text {
+    font-size: 1.25rem;
 }
 
 .big-text {
     font-size: 2rem;
+}
+
+button {
+    border-style: none;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+    background-color: rgb(35, 35, 35);
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: normal;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(18, 143, 189);
+    letter-spacing: 0.25rem;
+    transition: all 0.3s ease;
 }
