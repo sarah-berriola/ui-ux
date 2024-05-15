@@ -1,5 +1,37 @@
 /* Global styles (for every page) */
 
+/* Root Variables */
+html {
+    --base-color: #3E3E3E;
+    --primary-color: #FFCE8E;
+    --accent: #2DA1AB;
+    --text-color: #3E3E3E;
+    --description-text-color: #727578;
+    --button-text-color: white;
+    --debug-color: #AB2D9A;
+    --base-font-size: 16px;
+    font-size: var(--base-font-size);
+}
+
+/* Utility Classes */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    /* hide element visually without affecting DOM layout */
+    /* remaining accessible to screen readers and assistive technologies */
+}
+
+.has-debug-outline {
+    /* background-color: #f8f8f8; */
+    border: dotted 2px var(--debug-color);
+}
+
 /* Reset Browser Default Styling */
 * {
     box-sizing: border-box;
@@ -10,61 +42,173 @@
     line-height: 1.4;
 }
 
-/* Page Sections */
-header, main, aside, footer {
-    background-color: #f8f8f8;
-    border: dotted 2px rgb(0, 149, 255);
-}
-
+/* ------------------------------------------- */
+/* Page (Body) Layout Structure */
 body {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
-    min-height: 100vh;
-}
-
-header, footer {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
-    align-items: center;
+    /* 4+2 columns for mobile */
+    grid-template-columns: 2rem repeat(4, 1fr) 2rem;
+    grid-template-rows: 6rem auto 6rem;
     justify-content: center;
-}
-
-header {
-    height: 100px;
+    gap: 1rem;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
 }
 
 main {
-    grid-column: 2 / 12;
+    grid-column: 2 / 6;
+    grid-row: 2 / 3;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    /* Inherits Grid from <body> */
+    grid-template-columns: subgrid;
     gap: 1.5rem;
     min-height: calc(100vh - 100px - 1.5rem);
-}
-
-aside {
-    grid-column: 10 / 12;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    min-height: calc(100vh - 100px - 1.5rem);
+    justify-content: center;
 }
 
 footer {
+    grid-column: 1 / -1;
+    grid-row: 3 / -1;
+
+    display: grid;
+    /* Inherits Grid from <body> */
+    grid-template-columns: subgrid;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+
     height: 200px;
 }
 
-/* Subsections in the main section */
-main section {
-    grid-column: 1 / -1;
-    height: fit-content;
+/* ------------------------------------------- */
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    /* Currently not working due to stacking context */
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    padding: 0.5rem 0;
+    width: 100vw;
+    max-height: 6rem;
+
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 1.5rem;
+    /* 4+2 columns for mobile */
+    grid-template-columns: 2rem repeat(4, 1fr) 2rem;
+    grid-template-rows: auto;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1.5rem;
+    row-gap: 0.5rem;
+
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+
+    color: var(--text-color);
 }
 
+header > a {
+    /* LOGO anchor */
+    grid-column: 2 / 4;
+    display: inline-block;
+}
+
+header > a:hover {
+    border-style: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+h1.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-color);
+    transition: all 0.3s;
+}
+
+/* Header > Navigation */
+#main-nav {
+    grid-column: 5 / 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Header > Navigation > Hamburger Button */
+#checkbox {
+    display: none;
+}
+
+#checkbox:checked~#nav-menu {
+    left: 0;
+    transition: all 0.75s;
+}
+
+#checkbox-label {
+    cursor: pointer;
+}
+
+#nav-svg {
+    display: block;
+    width: 2rem;
+    fill: var(--base-color);
+}
+
+#nav-menu {
+    position: fixed;
+    top: 80px; /* To-Do: Fix later (header stacking context is independent from nav-menu) */
+    left: 200vw;
+    z-index: 2; /* Currently not working due to stacking context */
+
+    padding: 2rem 0;
+    width: 100vw;
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    row-gap: 2.5rem;
+
+    background-color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    transition: all 0.75s;
+}
+
+.menu-item {
+    display: block;
+}
+
+.menu-item a {
+    padding: 0.5rem 0.8rem;
+    border-style: none;
+    border-radius: 1.5rem;
+
+    color: var(--text-color);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.15rem;
+    transition: all 0.3s;
+}
+
+a.active,
+a:hover {
+    border-style: none;
+    border-radius: 1.5rem;
+
+    background-color: var(--accent);
+    color: var(--button-text-color);
+    font-weight: 500;
+    letter-spacing: 0.25rem;
+}
+
+
+/* ------------------------------------------- */
 /* Content elements */
 img {
     width: 100%;
@@ -72,16 +216,23 @@ img {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 6rem;
     line-height: normal;
+    font-family: "Dancing Script", cursive;
+    font-weight: 400;
+    color: var(--text-color);
 }
 
 .text {
     font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--description-text-color);
 }
 
 .big-text {
-    font-size: 2rem;
+    font-size: 2.18rem;
+    font-weight: 600;
+    color: var(--text-color);
 }
 
 button {
@@ -92,13 +243,268 @@ button {
     background-color: #3E3E3E;
     color: white;
     font-size: 1rem;
-    font-weight: 500;
     line-height: normal;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
     transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button:hover {
     background-color: rgb(18, 143, 189);
     letter-spacing: 0.25rem;
     transition: all 0.3s ease;
+}
+
+/* ------------------------------------------- */
+/* Media Queries for Page Layouts */
+
+/* Tablet View */
+@media screen and (min-width: 768px) {
+
+    /* ------------------------------------------- */
+    /* Page (Body) Layout Structure */
+    body {
+        /* 8+2 columns for tablets */
+        grid-template-columns: 2fr repeat(8, 1fr) 2fr;
+    }
+
+    main {
+        grid-column: 2 / 10;
+    }
+
+    /* ------------------------------------------- */
+    /* Header */
+    header {
+        /* 8+2 columns for tablets */
+        grid-template-columns: 2fr repeat(8, 1fr) 2fr;
+    }
+
+    header > a {
+        /* LOGO anchor */
+        grid-column: 2 / 4;
+    }
+
+    /* Header > Navigation */
+    #main-nav {
+        grid-column: 9 / 10;
+    }
+
+    #checkbox:checked~#nav-menu {
+        left: 60vw;
+        transition: all 0.75s;
+    }
+
+    #nav-menu {
+        top: 80px; /* To-Do: Fix later (header stacking context is independent from nav-menu) */
+        left: 140vw;
+
+        padding: 2rem 0;
+        width: 40vw;
+        height: 100dvh;
+
+        transition: all 0.75s;
+    }
+}
+
+/* Desktop View */
+@media screen and (min-width: 992px) {
+    /* ------------------------------------------- */
+    /* Page (Body) Layout Structure */
+    body {
+        /* 10+2 columns for desktop */
+        grid-template-columns: minmax(2rem, 4fr) repeat(10, minmax(1rem, 6rem)) minmax(2rem, 4fr);
+        grid-template-rows: 12rem auto 6rem;
+    }
+
+    main {
+        grid-column: 2 / 12;
+    }
+
+    /* -------- */
+    /* ------------------------------------------- */
+    /* Header */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3; /* Currently not working due to stacking context */
+
+        padding: 0.5rem 0;
+        width: 100vw;
+        max-height: 6rem;
+
+        display: grid;
+        /* 10+2 columns for desktop */
+        grid-template-columns: minmax(2rem, 4fr) repeat(10, minmax(1rem, 6rem)) minmax(2rem, 4fr);
+        grid-template-rows: minmax(1rem, 4rem);
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 1.5rem;
+        row-gap: 0.5rem;
+    }
+
+    header > a {
+        /* LOGO anchor */
+        grid-column: 2 / 4;
+    }
+
+    /* Header > Navigation */
+    #main-nav {
+        grid-column: 5 / 12;
+        display: grid;
+        grid-template-columns: subgrid;
+        min-height: 1.5rem;
+    }
+
+    /* Header > Navigation > Hamburger Button */
+    #checkbox {
+        display: none;
+    }
+
+    #checkbox-label {
+        display: none;
+    }
+
+    #nav-svg {
+        display: none;
+    }
+
+    #nav-menu {
+        grid-column: 1 / -1;
+        position: static;
+
+        padding: 1rem 0;
+        width: 100%;
+        height: fit-content;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        transition: all 0.75s;
+    }
+
+    .menu-item a {
+        padding: 0.5rem 0.8rem;
+        border-style: none;
+        border-radius: 1.5rem;
+
+        font-size: 1.25rem;
+        letter-spacing: 0.15rem;
+        transition: all 0.3s;
+    }
+
+    a.active,
+    a:hover {
+        border-style: none;
+        border-radius: 1.5rem;
+
+        background-color: var(--accent);
+        color: var(--button-text-color);
+        font-weight: 500;
+        letter-spacing: 0.25rem;
+    }
+}
+
+/* Big Desktop View */
+@media screen and (min-width: 1408px) {
+    /* ------------------------------------------- */
+    /* Page (Body) Layout Structure */
+    body {
+        /* 12+2 columns for desktop */
+        grid-template-columns: minmax(2rem, 4fr) repeat(12, minmax(1rem, 6rem)) minmax(2rem, 4fr);
+    }
+
+    main {
+        grid-column: 2 / 14;
+    }
+
+    /* -------- */
+    /* ------------------------------------------- */
+    /* Header */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3; /* Currently not working due to stacking context */
+
+        padding: 0.5rem 0;
+        width: 100vw;
+        max-height: 6rem;
+
+        display: grid;
+        /* 12+2 columns for desktop */
+        grid-template-columns: minmax(2rem, 4fr) repeat(12, minmax(1rem, 6rem)) minmax(2rem, 4fr);
+        grid-template-rows: minmax(1rem, 4rem);
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 1.5rem;
+        row-gap: 0.5rem;
+    }
+
+    header > a {
+        /* LOGO anchor */
+        grid-column: 2 / 4;
+    }
+
+    /* Header > Navigation */
+    #main-nav {
+        grid-column: 5 / 14;
+        display: grid;
+        grid-template-columns: subgrid;
+        min-height: 1.5rem;
+    }
+
+    /* Header > Navigation > Hamburger Button */
+    #checkbox {
+        display: none;
+    }
+
+    #checkbox-label {
+        display: none;
+    }
+
+    #nav-svg {
+        display: none;
+    }
+
+    #nav-menu {
+        grid-column: 1 / -1;
+        position: static;
+
+        padding: 1rem 0;
+        width: 100%;
+        height: fit-content;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 1.5rem;
+
+        transition: all 0.75s;
+    }
+
+    .menu-item a {
+        padding: 0.5rem 0.8rem;
+        border-style: none;
+        border-radius: 1.5rem;
+
+        font-size: 1.25rem;
+        letter-spacing: 0.15rem;
+        transition: all 0.3s;
+    }
+
+    a.active,
+    a:hover {
+        border-style: none;
+        border-radius: 1.5rem;
+
+        background-color: var(--accent);
+        color: var(--button-text-color);
+        font-weight: 500;
+        letter-spacing: 0.25rem;
+    }
 }
