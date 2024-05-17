@@ -21,29 +21,32 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 </head>
 
 <body>
 
     <header>
         <a href="#">
-            <img id="logo" src="./assets/img/logo.png">
+            <picture id="logo-box">
+                <img id="logo" src="./assets/img/logo.png">
+            </picture>
         </a>
         <nav id="main-nav">
             <input id="checkbox" type="checkbox">
             <label id="checkbox-label" for="checkbox" role="button" aria-label="Toggle navigation menu"
                 aria-labelledby="nav-label" aria-controls="nav-menu" aria-expanded="false">
-                <svg id="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-                    <path id="nav-svg-path" d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z">
-                    </path>
+                    <svg id="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z"/>
                 </svg>
             </label>
             <span id="nav-label" class="visually-hidden">Hamburger menu icon to toggle the navigation menu on
                 mobile</span>
             <ul id="nav-menu">
                 <li class="menu-item current"><a href="#">Work</a></li>
-                <li class="menu-item"><a href="#">About</a></li>
-                <li class="menu-item"><a href="#">Contact</a></li>
+                <li class="menu-item"><a href="./pages/about.html">About</a></li>
+                <li class="menu-item"><a href="./pages/contact.html">Contact</a></li>
                 <!-- <li class="menu-item"><a href="#">Playground</a></li> -->
             </ul>
         </nav>
@@ -52,70 +55,89 @@
     <main>
         <section id="hero">
             <picture id="hero-img-box">
-                <img id="hero-img" src="./assets/img/illustration-v4.jpg" alt="Cute illustration">
+                <img id="hero-img" class="animate__animated animate__fadeIn" src="./assets/img/illustration-v4.jpg" alt="Cute illustration">
             </picture>
             <div id="hero-textbox">
-                <h1>Hello!</h1>
-                <p class="big-text">I am Sarah, a UI/UX designer.
-                <p>
-                <p class="text">I design websites and apps to make them easy and
+                <h1 class="animate__animated animate__fadeInDown">Hello!</h1>
+                <p class="big-text animate__animated animate__fadeInUp">I am Sarah, a UI/UX designer.<p>
+                <p class="text animate__animated animate__fadeInUp"">I design websites and apps to make them easy and
                     enjoyable to use. I am based in Vancouver, Canada.</p>
-                <button>Get in Touch</button>
+                <button class="button-hero animate__animated animate__bounceIn">Get in Touch</button>
             </div>
         </section>
-
-        <hr>
+        <hr id="hr-1">
         <section id="project-1">
-            <picture id="project-1-img-box">
+            <picture id="project-1-img-box" class="animate__animated animate__fadeInLeft">
                 <img id="project-1-img" src="./assets/img/project-1.png" alt="UI UX project">
             </picture>
             <div id="description-1">
-                <h2>7VAN Brazilian Jiu Jitsu</h2>
-                <p class="text">Responsive and minimalist website design for a brand new BJJ Dojo.</p>
+                <h2 class="animate__animated animate__fadeInUp">7VAN Brazilian Jiu Jitsu</h2>
+                <p class="text animate__animated animate__fadeInUp">Responsive and minimalist website design for a brand new BJJ Dojo.</p>
                 <div class="label">
-                    <p class="tag-1">🎨 Product Design</p>
-                    <p class="tag-1">📱 Responsive</p>
-                    <p class="tag-2">🔍 User Research</p>
+                    <p class="tag-1 animate__animated animate__bounceIn">🎨 Product Design</p>
+                    <p class="tag-2 animate__animated animate__bounceIn">📱 Responsive</p>
+                    <p class="tag-3 animate__animated animate__bounceIn">🔍 User Research</p>
+                    <p class="tag-4 animate__animated animate__bounceIn">🚀 Branding </p>
                 </div>
-                <button>Read More</button>
+                <button class="animate__animated animate__bounceIn">Read More</button>
             </div>
         </section>
-
+        <hr id="hr-2">
         <section id="project-2">
-            <picture id="project-2-img-box"></picture>
-                <img id="project-2-img" src="./assets/img/project-1.png" alt="UI UX project">
+            <picture id="project-2-img-box" class="animate__animated animate__fadeInRight">
+                <img id="project-2-img" src="./assets/img/project-2.png" alt="UI UX project">
             </picture>
             <div id="description-2">
-                <h2>7VAN Brazilian Jiu Jitsu</h2>
-                <p class="text">Responsive and minimalist website design for a brand new BJJ Dojo.</p>
+                <h2 class="animate__animated animate__fadeInUp">Cornerstone College</h2>
+                <p class="text animate__animated animate__fadeInUp">Website redesign for an international college based in Vancouver.</p>
                 <div class="label">
-                    <p class="tag-1">🎨 Product Design</p>
-                    <p class="tag-1">📱 Responsive</p>
-                    <p class="tag-2">🔍 User Research</p>
+                    <p class="tag-1 animate__animated animate__bounceIn">🎨 Visual Design</p>
+                    <p class="tag-2 animate__animated animate__bounceIn">📱 Responsive</p>
+                    <p class="tag-3 animate__animated animate__bounceIn">🚀 Branding</p>
+
                 </div>
-                <button>Read More</button>
+                <button class="animate__animated animate__bounceIn">Read More</button>
             </div>
         </section>
-
+        <hr id="hr-3">
         <section id="project-3">
-            <picture id="project-3-img-box"></picture>
-                <img id="project-3-img" src="./assets/img/project-1.png" alt="UI UX project">
+            <picture id="project-3-img-box" class="animate__animated animate__fadeInLeft">
+                <img id="project-3-img" src="./assets/img/project-3.png" alt="UI UX project">
+            </picture>
             </picture>
             <div id="description-3">
-                <h2>7VAN Brazilian Jiu Jitsu</h2>
-                <p class="text">Responsive and minimalist website design for a brand new BJJ Dojo.</p>
+                <h2 class="animate__animated animate__fadeInUp">Mystic Mocha Coffee Shop</h2>
+                <p class="text animate__animated animate__fadeInUp">Responsive and maximalist website design for a fictional Cafe.</p>
                 <div class="label">
-                    <p class="tag-1">🎨 Product Design</p>
-                    <p class="tag-1">📱 Responsive</p>
-                    <p class="tag-2">🔍 User Research</p>
+                    <p class="tag-1 animate__animated animate__bounceIn">🎨 Product Design</p>
+                    <p class="tag-2 animate__animated animate__bounceIn">📱 Responsive</p>
+                    <p class="tag-3 animate__animated animate__bounceIn">🔍 User Research</p>
                 </div>
-                <button>Read More</button>
+                <button class="animate__animated animate__bounceIn">Read More</button>
             </div>
         </section>
     </main>
 
-    <footer class="has-debug-outline">
-
+    <footer>
+        <p id="footer-heading">Sarah Berriola</p>
+        <nav aria-label="Social Network Links">
+            <ul id="SNS">
+                <li><a href="https://www.linkedin.com/in/sarah-berriola/">
+                    <svg id="linkedin-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                        <path id="sns-svg-path-1" d="M14.9309 0C6.6853 0 0 6.71625 0 15C0 23.2837 6.6853 30 14.9309 30C23.1765 30 29.8618 23.2837 29.8618 15C29.8618 6.71625 23.1765 0 14.9309 0ZM12.4424 20H9.95392V12.5H12.4424V20ZM11.1982 11.3863C10.4429 11.3863 9.82949 10.7662 9.82949 10C9.82949 9.235 10.4417 8.61375 11.1982 8.61375C11.9547 8.61375 12.5668 9.235 12.5668 10C12.5668 10.7662 11.9534 11.3863 11.1982 11.3863ZM21.1521 20H18.6661V16.4237C18.6661 14.0725 16.1751 14.2712 16.1751 16.4237V20H13.6866V12.5H16.1751V13.8663C17.2601 11.8463 21.1521 11.6962 21.1521 15.8012V20Z" fill="#8D9AAB">
+                        </path>
+                    </svg>
+                </a></li>
+                <li><a href="#">
+                    <svg id="dribble-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                        <path id="sns-svg-path-1" d="M14.2528 12.4812C12.4872 13.0025 10.3832 13.2712 7.9482 13.2887C8.45212 11.2212 9.83696 9.50125 11.6847 8.55875C12.6514 9.82875 13.5062 11.1375 14.2528 12.4812ZM15.4535 14.8937C15.2992 14.5437 15.1374 14.195 14.967 13.85C12.9488 14.4875 10.5362 14.8113 7.74539 14.815L7.73544 15C7.73544 16.755 8.36254 18.365 9.40272 19.6187C10.9779 17.2425 12.9998 15.6637 15.4535 14.8937ZM10.5138 20.695C12.466 22.2262 15.0814 22.6813 17.5114 21.74C17.1979 19.88 16.7027 18.065 16.0308 16.3C13.7675 16.9775 11.9435 18.4425 10.5138 20.695ZM19.3168 9.2825C18.1012 8.34 16.5832 7.77125 14.9309 7.77125C14.3212 7.77125 13.7314 7.85625 13.1665 8.00125C14.1171 9.28625 14.9595 10.6087 15.6986 11.9662C17.2365 11.3112 18.4409 10.4163 19.3168 9.2825ZM29.8618 15C29.8618 23.2837 23.1765 30 14.9309 30C6.6853 30 0 23.2837 0 15C0 6.71625 6.6853 0 14.9309 0C23.1765 0 29.8618 6.71625 29.8618 15ZM23.6406 15C23.6406 10.1675 19.7399 6.25 14.9309 6.25C10.1219 6.25 6.2212 10.1675 6.2212 15C6.2212 19.8325 10.1219 23.75 14.9309 23.75C19.7399 23.75 23.6406 19.8325 23.6406 15ZM16.3941 13.3138C16.5894 13.7188 16.7736 14.1275 16.9503 14.5387C18.518 14.2675 20.2363 14.2838 22.1052 14.5913C22.0143 12.9763 21.4009 11.4988 20.4205 10.3375C19.4164 11.5938 18.0688 12.585 16.3941 13.3138ZM17.5313 15.9787C18.1398 17.615 18.6076 19.2925 18.9236 21.0075C20.5561 19.9075 21.712 18.1525 22.0305 16.1213C20.3918 15.8363 18.8925 15.7862 17.5313 15.9787Z" fill="#8D9AAB">
+                        </path>
+                    </svg>
+                </a></li>
+            </ul>
+        </nav>
+        <hr id="footer-hr">
+        <p id="copyright-text">&copy; Sarah Berriola - UI&#47;UX Portfolio 2024</p>
     </footer>
 
 </body>

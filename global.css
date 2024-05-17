@@ -10,6 +10,8 @@ html {
     --button-text-color: white;
     --debug-color: #AB2D9A;
     --base-font-size: 16px;
+    --icon-button-sm: 2rem;
+    --icon-button-pc: 3rem;
     font-size: var(--base-font-size);
 }
 
@@ -48,7 +50,7 @@ body {
     display: grid;
     /* 4+2 columns for mobile */
     grid-template-columns: 2rem repeat(4, 1fr) 2rem;
-    grid-template-rows: 6rem auto 6rem;
+    grid-template-rows: 6rem auto auto;
     justify-content: center;
     gap: 1rem;
     min-height: 100vh;
@@ -71,15 +73,24 @@ main {
 footer {
     grid-column: 1 / -1;
     grid-row: 3 / -1;
-
+    
     display: grid;
     /* Inherits Grid from <body> */
     grid-template-columns: subgrid;
+    grid-template-rows: 4rem 1rem 1.5rem 1rem 2rem;
     gap: 1rem;
     align-items: center;
     justify-content: center;
 
-    height: 200px;
+    margin-top: 3rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+    padding: 1.5rem 0;
+    height: auto;
+
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.03);
+
+    text-align: center;
 }
 
 /* ------------------------------------------- */
@@ -117,8 +128,14 @@ header > a {
     display: inline-block;
 }
 
-.logo {
-    max-width: 20px;
+#logo-box {
+    width: minmax(1rem, 3rem);
+    display: flex;
+    justify-content: start;
+}
+
+#logo-box > img {
+    width: var(--icon-button-sm);
 }
 
 /* Header > Navigation */
@@ -145,7 +162,7 @@ header > a {
 
 #nav-svg {
     display: block;
-    width: 2rem;
+    width: var(--icon-button-sm);
     fill: var(--base-color);
 }
 
@@ -189,8 +206,6 @@ header > a {
 .menu-item.current a {
     color: var(--accent);
 }
-
-
 
 /* ------------------------------------------- */
 /* Content elements */
@@ -248,8 +263,6 @@ label {
 }
 
 hr {
-    grid-column: 1 / 5;
-    grid-row: 2;
     align-self: center;
     border-color: #D9D9D9;
     background-color: #D9D9D9;
@@ -257,6 +270,50 @@ hr {
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
+}
+
+/* ------------------------------------------- */
+/* Footer */
+#footer-heading {
+    grid-column: 2 / 6;
+    grid-row: 1 / 2;
+    font-size: 2rem;
+    line-height: normal;
+    font-family: "Dancing Script", cursive;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+footer > nav {
+    grid-column: 2 / 6;
+    grid-row: 2 / 3;
+}
+
+#SNS {
+    grid-column: 2 / 6;
+    display: flex;
+    justify-content: center;
+    column-gap: 1.5rem;
+}
+
+#linkedin-svg,
+#dribble-svg {
+    display: block;
+    width: var(--icon-button-sm);
+    fill: var(--base-color);
+}
+
+#footer-hr {
+    grid-column: 2 / 6;
+    grid-row: 3 / 4;
+    align-self: baseline;
+}
+
+#copyright-text {
+    grid-column: 2 / 6;
+    grid-row: 4 / 5;
+    font-size: 0.75rem;
+    color: var(--description-text-color);
 }
 
 /* ------------------------------------------- */
@@ -299,7 +356,7 @@ hr {
     }
 
     #nav-menu {
-        top: 80px; /* To-Do: Fix later (header stacking context is independent from nav-menu) */
+        top: 48px; /* To-Do: Fix later (header stacking context is independent from nav-menu) */
         left: 140vw;
 
         padding: 2rem 0;
@@ -307,10 +364,8 @@ hr {
         height: 100dvh;
 
         transition: all 0.75s;
-    }
 
-    hr {
-        grid-column: 1 / 10;
+        box-shadow: -4px 0 6px rgba(0, 0, 0, 0.03);
     }
 }
 
@@ -355,6 +410,10 @@ hr {
     header > a {
         /* LOGO anchor */
         grid-column: 2 / 4;
+    }
+
+    #logo-box > img {
+        width: var(--icon-button-pc);
     }
 
     /* Header > Navigation */
@@ -474,6 +533,10 @@ hr {
     header > a {
         /* LOGO anchor */
         grid-column: 2 / 4;
+    }
+
+    #logo-box > img {
+        width: var(--icon-button-pc);
     }
 
     /* Header > Navigation */
